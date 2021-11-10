@@ -1,10 +1,9 @@
-import { Postagem } from "./Postagem"
-
-export class Usuario{
+export class CredenciaisDTO {
     public email: string;
     public foto: string;
     public idUsuario: number;
     public nome: string;
     public senha: string;
     public tipo: string;
+    public token: string;
   }
