@@ -15,10 +15,10 @@ export class AuthService {
   ) { }
 
   entrar(usuarioLogin: UsuarioLoginDTO ): Observable<UsuarioLoginDTO>{
-    return this.http.post<UsuarioLoginDTO>('http://localhosot:8080/usuarios/logar', usuarioLogin)
+    return this.http.put<UsuarioLoginDTO>('https://blodpessoal.herokuapp.com/api/v1/usuario/credenciais', usuarioLogin)
   }
 
   cadastrar(usuario: Usuario): Observable<Usuario>{
-    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario)
+    return this.http.post<Usuario>('https://blodpessoal.herokuapp.com/api/v1/usuario/salvar', usuario)
   }
 }
