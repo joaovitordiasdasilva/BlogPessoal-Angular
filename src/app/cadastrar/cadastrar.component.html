@@ -9,7 +9,7 @@
   
             <div class="form-group">
               <label for="nome">Nome</label>
-              <input
+              <input  [(ngModel)] = 'Usuario.nome' 
                 class="form-control"
                 name="nome"
                 id="nome"
@@ -20,7 +20,7 @@
   
             <div class="form-group">
               <label for="usuario">Usuario</label>
-              <input
+              <input [(ngModel)] = 'Usuario.usuario'
                 class="form-control"
                 name="usuario"
                 id="usuario"
@@ -31,7 +31,7 @@
   
             <div class="form-group">
               <label for="foto">Link da Foto</label>
-              <input
+              <input [(ngModel)] = 'Usuario.foto'
                 class="form-control"
                 name="foto"
                 id="foto"
@@ -42,18 +42,18 @@
   
             <div class="form-group">
               <label for="senha">Senha</label>
-              <input
+              <input (input)='confirmSenha($event)'
                 class="form-control"
                 name="senha"
                 id="senha"
-                placeholder="Seu Senha"
+                placeholder="Sua Senha"
                 type="password"
               />
             </div>
   
             <div class="form-group">
               <label for="confirmaSenha">Confirmar Senha</label>
-              <input
+              <input [(ngModel)] = 'Usuario.senha'
                 class="form-control"
                 name="confirmaSenha"
                 id="confirmaSenha"
@@ -64,7 +64,7 @@
   
             <div class="form-group">
               <label for="tipo">Tipo de Usuário</label>
-              <select name="tipo" id="tipo" class="form-control">
+              <select name="tipo" id="tipo" class="form-control" (change)='tipoUser($event)'>
                 <option value="">Selecione um tipo de usuário:</option>
                 <option value="normal">Normal</option>
                 <option value="admin">Administrador</option>
@@ -73,7 +73,7 @@
   
             <div class="d-flex justify-content-center">
               <button type="submit" class="btn btn-danger mr-4" routerLink='/entrar'>Cancelar</button>
-              <button type="submit" class="btn btn-success">Cadastrar</button>
+              <button type="submit" class="btn btn-success" (click)='cadastrar()'>Cadastrar</button>
             </div>
           </div>
         </div>

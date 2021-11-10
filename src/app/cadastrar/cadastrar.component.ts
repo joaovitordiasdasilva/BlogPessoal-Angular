@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from '../model/Usuario';
+import { UsuarioLoginDTO } from '../model/UsuarioLoginDTO';
 
 @Component({
   selector: 'app-cadastrar',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarComponent implements OnInit {
 
+  usuario:  Usuario = new Usuario
+  confirmarSenha: string
+  tipoUsuario: string
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    window.scroll(0,0)
+  }
+
+  confirmSenha(event: any){
+    this.confirmarSenha = event.targe.value
+
+  }
+
+  tipoUser(event: any){
+    this.tipoUsuario = event.targe.value
+
+  }
+
+  cadastrar(){
+
+
   }
 
 }
