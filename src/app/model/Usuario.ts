@@ -7,4 +7,5 @@ export class Usuario{
     public nome: string;
     public senha: string;
     public tipo: string;
+    public postagem: Postagem[]
   }
