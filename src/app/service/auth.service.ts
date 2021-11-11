@@ -1,8 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CredenciaisDTO } from '../model/CredenciaisDTO';
 import { Usuario } from '../model/Usuario';
-import { UsuarioLoginDTO } from '../model/UsuarioLoginDTO';
 
 
 @Injectable({
@@ -14,8 +14,8 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  entrar(usuarioLogin: UsuarioLoginDTO ): Observable<UsuarioLoginDTO>{
-    return this.http.put<UsuarioLoginDTO>('https://blodpessoal.herokuapp.com/api/v1/usuario/credenciais', usuarioLogin)
+  entrar(usuarioLogin: CredenciaisDTO ): Observable<CredenciaisDTO>{
+    return this.http.put<CredenciaisDTO>('https://blodpessoal.herokuapp.com/api/v1/usuario/credenciais', usuarioLogin)
   }
 
   cadastrar(usuario: Usuario): Observable<Usuario>{
