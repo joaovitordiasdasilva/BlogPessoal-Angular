@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
-import { UsuarioLoginDTO } from '../model/UsuarioLoginDTO';
 import { CredenciaisDTO } from '../model/CredenciaisDTO';
 import { AuthService } from '../service/auth.service';
 
@@ -12,8 +11,8 @@ import { AuthService } from '../service/auth.service';
 })
 export class EntrarComponent implements OnInit {
 
-  usuarioLogin: UsuarioLoginDTO = new UsuarioLoginDTO
-  credenciaisLogin: CredenciaisDTO = new CredenciaisDTO
+  usuarioLogin: CredenciaisDTO = new CredenciaisDTO();
+  
   constructor(
     private auth: AuthService,
     private router: Router
@@ -24,25 +23,22 @@ export class EntrarComponent implements OnInit {
   }
 
   entrar(){
-    console.log(this.usuarioLogin)
-    this.auth.entrar(this.usuarioLogin).subscribe((resp: UsuarioLoginDTO) => {
-      this.usuarioLogin = resp
+    this.auth.entrar(this.usuarioLogin).subscribe((resp: CredenciaisDTO) => {
+      this.usuarioLogin = resp;
+      environment.token = this.usuarioLogin.token;
+      environment.id = this.usuarioLogin.idUsuario;
+      environment.nome = this.usuarioLogin.nome;
+      environment.email = this.usuarioLogin.email;
+      environment.foto = this.usuarioLogin.foto;
+      environment.tipo = this.usuarioLogin.tipo;
 
-      environment.token = this.credenciaisLogin.token
-      environment.nome = this.credenciaisLogin.nome
-      environment.foto = this.credenciaisLogin.foto
-      environment.id = this.credenciaisLogin.idUsuario
-
-      console.log(environment.token)
-      console.log(environment.nome)
-      console.log(environment.foto)
-      console.log(environment.id)
-
-      this.router.navigate(['/inicio'])
-    },erro =>{
-      if(erro.status == 400){
-        alert('Usuário ou senha estão incorretos!')
+      console.log(environment)
+      this.router.navigate(['/inicio']);
+    }, erro => {
+      if (erro.status == 500) {
+        alert("Usuário ou senha inválidos!");
       }
     })
   }
+
 }
